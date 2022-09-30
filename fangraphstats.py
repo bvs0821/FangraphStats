@@ -5,7 +5,6 @@ import datetime as date
 from bs4 import BeautifulSoup
 import lxml
 
-
 # user input for date ranges
 def date_ranges():
     num_days = list(map(int, input("Enter the amount(s) of days you are analyzing: ").split()))
