@@ -95,6 +95,7 @@ def fangraphs_pitchers_parse(url):
 def get_hitter_stats(num_days, qual_hitter, num_players):
     global df_hitter_total
 
+    # create variable for starting and ending date of custom date range
     end_date = date.date.today()
     start_date = end_date - date.timedelta(days=num_days - 1)
     end_date = dt.strftime(end_date, "%Y-%m-%d")
@@ -102,7 +103,7 @@ def get_hitter_stats(num_days, qual_hitter, num_players):
     print(f"Starting date is: {start_date}")
     print(f"Ending date is: {end_date}")
 
-    df_hitter_total = {}
+    # url for hitter stats with all statistical categories
     url = 'https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual={}&type=c,-1,3,4,5,6,7,8,9,10,11,' \
           '12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,' \
           '46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,' \
@@ -118,6 +119,8 @@ def get_hitter_stats(num_days, qual_hitter, num_players):
           '310,311,312,313,314,315,316,317,' \
           '318&season=2022&month=1000&season1=2022&ind=0&team=0&rost=0&age=0&filter=&players=0&startdate={' \
           '}&enddate={}&page=1_{}'.format(qual_hitter, start_date, end_date, num_players)
+
+    # parse url to get DataFrames of hitter stats
     try:
         df_hitter_total = fangraphs_hitters_parse(url)
     except ConnectionError:
@@ -125,6 +128,7 @@ def get_hitter_stats(num_days, qual_hitter, num_players):
     except:
         pass
 
+    # change 'Name' column to player last name and first name
     names = df_hitter_total['Name'].tolist()
     last_names = []
     first_names = []
@@ -132,16 +136,13 @@ def get_hitter_stats(num_days, qual_hitter, num_players):
         first_names.append(' '.join(names[i].split(' ')[:1]))
         last_names.append(' '.join(names[i].split(' ')[1:]))
 
-    ln_search = []
-    for i in range(0, len(last_names)):
-        ln_search.append(' '.join(last_names[i].split(' ')[:1]))
-
+    # drop Index and 'Name' column, add last name and first name column
     df_hitter_total.drop(['Name', '#'], axis=1, inplace=True)
     df_hitter_total.insert(loc=0, column='lastName', value=last_names)
     df_hitter_total.insert(loc=1, column='firstName', value=first_names)
 
+    # change names of statistic names to allowable names for SQL tables
     hd = df_hitter_total.to_dict()
-
     hitterkeys = list(hd.keys())
 
     for i in range(len(hitterkeys)):
@@ -174,12 +175,14 @@ def get_hitter_stats(num_days, qual_hitter, num_players):
 
     df_hitter_total = pd.DataFrame.from_dict(hitterdict)
 
+    # return DataFrame with all hitter statistics
     return df_hitter_total
 
 # function to combine all pitcher stat categories in a DataFrame for each date range analyzed
 def get_pitcher_stats(num_days, qual_hitter, num_players):
     global df_pitcher_total
 
+    # create variable for starting and ending date of custom date range
     end_date = date.date.today()
     start_date = end_date - date.timedelta(days=num_days - 1)
     end_date = dt.strftime(end_date, "%Y-%m-%d")
@@ -187,7 +190,7 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
     print(f"Starting date is: {start_date}")
     print(f"Ending date is: {end_date}")
 
-    #df_pitcher_total = {}
+    # url for pitcher stats with all statistical categories
     url = 'https://www.fangraphs.com/leaders.aspx?pos=all&stats=pit&lg=all&qual={}&type=c%2C-1%2C3%2C4%2C5%2C6' \
           '%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27' \
           '%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47' \
@@ -209,6 +212,8 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
           '%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327' \
           '%2C328%2C329%2C330%2C331%2C332&season=2022&month=1000&season1=2022&ind=0&team=0&rost=0&age=0&filter' \
           '=&players=0&startdate={}&enddate={}&page=1_{}'.format(qual_hitter, start_date, end_date, num_players)
+
+    # parse url to get DataFrames of pitcher stats
     try:
         df_pitcher_total = fangraphs_pitchers_parse(url)
     except ConnectionError:
@@ -216,6 +221,7 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
     except:
         pass
 
+    # change 'Name' column to player last name and first name
     names = df_pitcher_total['Name'].tolist()
     last_names = []
     first_names = []
@@ -223,16 +229,13 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
         first_names.append(' '.join(names[i].split(' ')[:1]))
         last_names.append(' '.join(names[i].split(' ')[1:]))
 
-    ln_search = []
-    for i in range(0, len(last_names)):
-        ln_search.append(' '.join(last_names[i].split(' ')[:1]))
-
+    # drop Index and 'Name' column, add last name and first name column
     df_pitcher_total.drop(['Name', '#'], axis=1, inplace=True)
     df_pitcher_total.insert(loc=0, column='lastName', value=last_names)
     df_pitcher_total.insert(loc=1, column='firstName', value=first_names)
 
+    # change names of statistic names to allowable names for SQL tables
     pitd = df_pitcher_total.to_dict()
-
     pitcherkeys = list(pitd.keys())
 
     for i in range(len(pitcherkeys)):
@@ -267,6 +270,7 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
 
     df_pitcher_total = pd.DataFrame.from_dict(pitcherdict)
 
+    # return DataFrame with all pitcher statistics
     return df_pitcher_total
 
 class FanGraphHitterCall:
