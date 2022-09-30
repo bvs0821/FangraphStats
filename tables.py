@@ -1,7 +1,7 @@
 from sqlalchemy import PrimaryKeyConstraint, ForeignKeyConstraint
 from sqlalchemy import Table, Column, Integer, String, DateTime, Date, Boolean, Float
-from fangraphdatabase import FanGraphDatabase
-from fangraphstats import date_ranges
+from database import FanGraphDatabase
+from stats import date_ranges
 
 # script used to create tables for SQLALchemy Object Relational Mapping
 num_days = date_ranges()

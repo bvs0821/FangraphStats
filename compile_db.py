@@ -11,7 +11,7 @@ for i in range(365):
         pass
 
 # import to create SQL tables for fangraph stats
-from fangraphtables import *
+from tables import *
 
 # script populates all FanGraph stats table with corresponding stats of each date range
 for day in num_days:

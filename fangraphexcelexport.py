@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 import xlsxwriter
 import os
-from fangraphcompiledb import *
+from compile_db import *
 cwd = os.getcwd()
 
 for day in num_days:

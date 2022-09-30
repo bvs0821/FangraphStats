@@ -4,8 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.exc import IntegrityError
 Base = declarative_base()
 
-from fangraphstats import FanGraphHitterCall
-from fangraphstats import FanGraphPitcherCall
+from stats import FanGraphHitterCall
+from stats import FanGraphPitcherCall
 
 class FanGraphDatabase:
 
