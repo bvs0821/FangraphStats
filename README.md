@@ -13,13 +13,13 @@ The program is ran one of two ways (using Python v3.9), depending on whether the
 For both .db and .xlsx output:
 
 ```python
-python3.9 fangraphexcelexport.py
+python3.9 excel_export.py
 ```
 
 For only .db output:
 
 ```python
-python3.9 fangraphcompiledb.py
+python3.9 compile_db.py
 ```
 
 Regardless of the entry point, user is then prompted to input the number of days they want stats from (starting from current day). User inputs integers with a space between (creating a list).
