@@ -5,6 +5,13 @@ import os
 from compile_db import *
 cwd = os.getcwd()
 
+#delete all .xlsx files before compiling data
+for i in range(365):
+    try:
+        os.remove(cwd + "/fangraph_{}days.xlsx".format(i))
+    except:
+        pass
+
 for day in num_days:
     # insert the file path for the Excel wooksheet
     filePath = cwd + '/fangraph_{}days.xlsx'.format(day)
