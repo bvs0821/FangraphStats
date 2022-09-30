@@ -294,11 +294,3 @@ class FanGraphPitcherCall:
 
     def __repr__(self):
         return f"<FanGraph Pitching Stats: Complete>"
-
-
-#hitterapicall = FanGraphHitterCall(5)
-#hitterstats = hitterapicall.hitters
-
-#hitterurlstats = fangraphs_pitchers_parse('https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=1&season=2022&month=0&season1=2022&ind=0&team=0&rost=0&age=0&filter=&players=0&startdate=2022-01-01&enddate=2022-12-31')
-#pitcherapicall = FanGraphPitcherCall()
-#pitcherstats = pitcherapicall.pitchers
