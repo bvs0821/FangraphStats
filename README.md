@@ -54,4 +54,4 @@ fangraph_{}days.db with {} holding the number of days analyzed.
 fangraph_{}days.xlsx with {} holding the number of days analyzed.
 
 ## Contact
-For inquiries about the project, please email brandon.v.schiller@gmail.com
+For inquiries about the project, please email bvs0821@yahoo.com
