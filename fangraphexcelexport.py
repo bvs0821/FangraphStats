@@ -3,13 +3,14 @@ import sqlite3
 import xlsxwriter
 import os
 from fangraphcompiledb import *
+cwd = os.getcwd()
 
 for day in num_days:
     # insert the file path for the Excel wooksheet
-    filePath = '/Users/brandon/Desktop/fangraphstats/fangraph_data_{}days.xlsx'.format(day)
+    filePath = cwd + '/fangraph_{}days.xlsx'.format(day)
 
     # create SQLite connection with fangraph SQL database
-    conn = sqlite3.connect('/Users/brandon/Desktop/fangraphstats/fangraph_condensed_{}days.db'.format(day))
+    conn = sqlite3.connect(cwd + '/fangraph_{}days.db'.format(day))
 
     writer = pd.ExcelWriter(filePath, engine='xlsxwriter')
 

@@ -1,11 +1,12 @@
 import pandas as pd
 import sqlalchemy
 import os
+cwd = os.getcwd()
 
 #delete all DB files before compiling data
 for i in range(365):
     try:
-        os.remove("/Users/brandon/Desktop/fangraphstats/fangraph_condensed_{}days.db".format(i))
+        os.remove(cwd + "/fangraph_{}days.db".format(i))
     except:
         pass
 

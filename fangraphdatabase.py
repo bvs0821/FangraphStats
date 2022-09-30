@@ -20,7 +20,7 @@ class FanGraphDatabase:
     # initialize database and SQLite engine
     def __init__(self, day):
 
-        self.db_engine = create_engine('sqlite:///fangraph_condensed_{}days.db'.format(day), echo=True)
+        self.db_engine = create_engine('sqlite:///fangraph_{}days.db'.format(day), echo=True)
         print(self.db_engine)
 
         self.Base = declarative_base(bind=self.db_engine)
