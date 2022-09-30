@@ -1,8 +1,8 @@
 # FangraphStats
 
-FangraphStats is a projected intended to help users more easily analyze baseball statistics compiled from fangraph.com.
+FangraphStats is a projected intended to help users more easily analyze baseball statistics compiled from fangraphs.com.
 
-Fangraph organizes hitter and pitcher statistics in many tables (Standard, Advanced, etc.). This program scraps all hitter and pitcher statistics and outputs a .db and .xlsx files of the fangraph tables.
+Fangraphs organizes hitter and pitcher statistics in many tables (Standard, Advanced, etc.). This program scraps all hitter and pitcher statistics and outputs a .db and .xlsx files of the fangraphs tables.
 
 User are able to input the number of days they want statistics from, the qualifying number of at bats/inning pitched to be considered, and the number of hitters/pitchers stats are accrued from.
 
