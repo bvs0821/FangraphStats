@@ -27,21 +27,21 @@ Regardless of the entry point, user is then prompted to input the number of days
 Example of requesting statistics from last 5, 10, and 15 days.
 
 ```python
-Enter the amount(s) of days you are analyzing: 
+"Enter the amount(s) of days you are analyzing: "
 5 10 15
 ```
 
 The user then inputs the minimum number of at bats required to be included as a single integer (based on at bats that occurred in the inputted date range), see below for 5 at bat minimum:
 
 ```python
-Enter minimum number of at bats for hitter: 
+"Enter minimum number of at bats for hitter: "
 5 
 ```
 
 Next, the user inputs the number of hitters (as a single integer) to be included in outputted tables, see below for 50 hitters:
 
 ```python
-Enter number of hitters displayed: 
+"Enter number of hitters displayed: "
 50 
 ```
 
