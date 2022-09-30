@@ -59,7 +59,6 @@ def fangraphs_hitters_parse(url):
         rows.append(row_data)
 
     # return DataFrame
-    print(pd.DataFrame(rows, columns=headers))
     return pd.DataFrame(rows, columns=headers)
 
 # function to parse Fangraph pitcher stats and extract Pandas Dataframes with BeautifulSoup
@@ -237,7 +236,6 @@ def get_pitcher_stats(num_days, qual_hitter, num_players):
     pitcherkeys = list(pitd.keys())
 
     for i in range(len(pitcherkeys)):
-        print(pitcherkeys[i])
         c1 = pitcherkeys[i][-1:]
         if c1 == ')':
             pitcherkeys[i] = pitcherkeys[i][:-5]
